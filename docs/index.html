@@ -153,7 +153,7 @@
   <nav class="nav">
     <div class="container">
       <div class="brand">CLTR<span class="ac">PULSE</span><span class="for">FOR VALORANT</span></div>
-      <a id="navDl" class="nav-dl" href="https://github.com/erensezen2/cltrpulse-releases/releases/latest" rel="noopener">⬇ İndir</a>
+      <a id="navDl" class="nav-dl" href="indir/">⬇ İndir</a>
     </div>
   </nav>
 
@@ -164,10 +164,10 @@
       <p class="lead">Takımın ve rakip takımın rankları, KDA, kazanma, kafa oranı, takılı silah skinleri
         ve salise hassasiyetinde spike sayacı — gerçek zamanlı, tek ekranda.</p>
       <div class="cta">
-        <a id="dlBtn" class="btn-dl" href="https://github.com/erensezen2/cltrpulse-releases/releases/latest" rel="noopener">
+        <a id="dlBtn" class="btn-dl" href="indir/">
           <span class="ico">⬇</span> <span>Windows için İndir</span>
         </a>
-        <div class="verline" id="verLine"><a href="https://github.com/erensezen2/cltrpulse-releases/releases/latest" rel="noopener">Tüm sürümler</a></div>
+        <div class="verline" id="verLine">CLTR PULSE · Windows</div>
       </div>
     </div>
   </header>
@@ -259,23 +259,14 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
     })();
 
-    // En guncel .exe'yi GitHub'dan otomatik bul -> indirme butonlarina bagla.
-    (function () {
-      var REPO = 'erensezen2/cltrpulse-releases';
-      fetch('https://api.github.com/repos/' + REPO + '/releases/latest')
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d) return;
-          var exe = (d.assets || []).find(function (a) { return /\.exe$/i.test(a.name); });
-          if (exe && exe.browser_download_url) {
-            document.getElementById('dlBtn').href = exe.browser_download_url;
-            document.getElementById('navDl').href = exe.browser_download_url;
-          }
-          var v = (d.tag_name || d.name || '').replace(/^v/, '');
-          if (v) document.getElementById('verLine').innerHTML =
-            'Sürüm v' + v + ' · <a href="https://github.com/' + REPO + '/releases/latest" rel="noopener">Tüm sürümler</a>';
-        }).catch(function () {});
-    })();
+    // Sag tik + kaynak-goruntule/devtools kisayollarini engelle (caydirici).
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    document.addEventListener('keydown', function (e) {
+      var k = (e.key || '').toLowerCase();
+      if (k === 'f12') { e.preventDefault(); return; }
+      if ((e.ctrlKey || e.metaKey) && k === 'u') { e.preventDefault(); return; }
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) { e.preventDefault(); }
+    });
 
     // 3D mouse-tilt + takip eden isik
     document.querySelectorAll('.tilt').forEach(function (tilt) {
