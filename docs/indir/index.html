@@ -42,6 +42,16 @@
         .catch(function () { document.getElementById('msg').textContent = 'Bağlantı hatası, lütfen tekrar dene.'; });
     })();
   </script>
-  <script>try{fetch("https://illegalculture.org/api/pulse/track",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:"download",id:"web",version:"-",os:"web"}),keepalive:true}).catch(function(){});}catch(e){}</script>
+
+  <script>
+  (function(){
+    var EP="https://illegalculture.org/api/pulse/track";
+    fetch("https://api.github.com/repos/erensezen2/cltrpulse-releases/releases/latest")
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){var v=(d&&d.tag_name)?d.tag_name.replace(/^v/,""):"-";
+        fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:"download",id:"web",version:v,os:"web"}),keepalive:true}).catch(function(){});})
+      .catch(function(){});
+  })();
+  </script>
 </body>
 </html>

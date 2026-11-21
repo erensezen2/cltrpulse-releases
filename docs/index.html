@@ -145,6 +145,19 @@
       .skin-grid { grid-template-columns: 1fr; gap: 16px; }
       .nav .brand .for { display: none; }
     }
+  
+    /* Cerez/gizlilik bildirimi */
+    .cookiebar{position:fixed;left:16px;right:16px;bottom:16px;z-index:300;display:none;
+      gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+      max-width:980px;margin:0 auto;padding:14px 18px;border-radius:12px;
+      border:1px solid var(--border-strong,rgba(255,255,255,0.16));
+      background:rgba(13,13,17,0.96);box-shadow:0 10px 40px rgba(0,0,0,0.5);}
+    .cookiebar.show{display:flex;}
+    .cookiebar p{margin:0;font-size:13px;line-height:1.6;color:var(--muted,#8b8b99);flex:1 1 320px;}
+    .cookiebar a{color:#ff6a9c;text-decoration:none;}
+    .cookiebar button{cursor:pointer;border:none;border-radius:9px;padding:10px 20px;
+      font-family:inherit;font-weight:700;font-size:13px;color:#230210;
+      background:linear-gradient(180deg,#ff6a9c,#ff2d6f);}
   </style>
 </head>
 <body>
@@ -282,8 +295,34 @@
       tilt.addEventListener('mouseleave', function () { inner.style.transform = ''; });
     });
   </script>
+
   <script>
-  (function(){var EP="https://illegalculture.org/api/pulse/track";function ping(ev){try{fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:ev,id:"web",version:"-",os:"web"}),keepalive:true}).catch(function(){});}catch(e){}}ping("visit");var d=document.getElementById("dlBtn"),n=document.getElementById("navDl");if(d)d.addEventListener("click",function(){ping("download");});if(n)n.addEventListener("click",function(){ping("download");});})();
+  (function(){
+    var EP="https://illegalculture.org/api/pulse/track";
+    var REPO="erensezen2/cltrpulse-releases";
+    var ver="-";
+    function ping(ev){try{fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:ev,id:"web",version:ver,os:"web"}),keepalive:true}).catch(function(){});}catch(e){}}
+    fetch("https://api.github.com/repos/"+REPO+"/releases/latest").then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.tag_name)ver=d.tag_name.replace(/^v/,"");}).catch(function(){}).finally(function(){ping("visit");});
+    var d=document.getElementById("dlBtn"),n=document.getElementById("navDl");
+    function dl(){ping("download");}
+    if(d)d.addEventListener("click",dl); if(n)n.addEventListener("click",dl);
+  })();
+  </script>
+
+  <div class="cookiebar" id="cookiebar">
+    <p>Bu site, hizmeti iyileştirmek için çerez kullanır ve anonim ziyaret/indirme istatistiği
+       toplar (IP adresi dâhil). Siteyi kullanmaya devam ederek bunu kabul etmiş olursun.</p>
+    <button id="cookieOk">Tamam</button>
+  </div>
+  <script>
+    (function(){try{
+      var bar=document.getElementById("cookiebar");
+      if(!localStorage.getItem("cltr_cookie_ok")){bar.classList.add("show");}
+      document.getElementById("cookieOk").addEventListener("click",function(){
+        try{localStorage.setItem("cltr_cookie_ok","1");}catch(e){}
+        bar.classList.remove("show");
+      });
+    }catch(e){}})();
   </script>
 </body>
 </html>
