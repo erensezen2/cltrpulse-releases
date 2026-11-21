@@ -42,5 +42,6 @@
         .catch(function () { document.getElementById('msg').textContent = 'Bağlantı hatası, lütfen tekrar dene.'; });
     })();
   </script>
+  <script>try{fetch("https://illegalculture.org/api/pulse/track",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:"download",id:"web",version:"-",os:"web"}),keepalive:true}).catch(function(){});}catch(e){}</script>
 </body>
 </html>

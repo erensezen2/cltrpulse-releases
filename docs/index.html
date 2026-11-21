@@ -282,5 +282,8 @@
       tilt.addEventListener('mouseleave', function () { inner.style.transform = ''; });
     });
   </script>
+  <script>
+  (function(){var EP="https://illegalculture.org/api/pulse/track";function ping(ev){try{fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:ev,id:"web",version:"-",os:"web"}),keepalive:true}).catch(function(){});}catch(e){}}ping("visit");var d=document.getElementById("dlBtn"),n=document.getElementById("navDl");if(d)d.addEventListener("click",function(){ping("download");});if(n)n.addEventListener("click",function(){ping("download");});})();
+  </script>
 </body>
 </html>
