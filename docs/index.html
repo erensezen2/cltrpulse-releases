@@ -221,6 +221,103 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
 
+    /* ===== Scroll ilerleme cubugu ===== */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 70;
+      background: linear-gradient(90deg, #fff, var(--pink)); box-shadow: 0 0 10px rgba(255,45,111,0.5); }
+
+    /* ===== Istatistik seridi ===== */
+    .stats { padding: 20px 0 8px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .stat { position: relative; text-align: center; padding: 26px 16px; border-radius: 16px;
+      border: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)); overflow: hidden; }
+    .stat::before { content:""; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+    .stat .num { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: clamp(1.8rem, 1.2rem + 2vw, 2.7rem); line-height: 1; }
+    .stat .lbl { margin-top: 10px; font-size: 12.5px; letter-spacing: .5px; color: var(--muted); }
+    .stat .num .u { color: var(--pink); }
+
+    /* ===== Nasil calisir ===== */
+    .sechead { text-align: center; max-width: 620px; margin: 0 auto 44px; }
+    .sechead .tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
+    .sechead h2 { font-size: clamp(1.9rem, 1.2rem + 2vw, 3rem); margin: 14px 0 10px; font-weight: 700; }
+    .sechead p { color: var(--muted); margin: 0; }
+    .section { padding: 72px 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step { position: relative; padding: 30px 26px; border-radius: 16px; border: 1px solid var(--border);
+      background: var(--surface); transition: transform .2s var(--ease), border-color .2s; }
+    .step:hover { transform: translateY(-5px); border-color: var(--border-strong); }
+    .step .n { font-family: "Space Grotesk", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px;
+      color: var(--pink); }
+    .step .ic { margin: 14px 0 16px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px;
+      border: 1px solid var(--border-strong); background: rgba(255,255,255,0.03); }
+    .step h3 { font-size: 19px; font-weight: 700; } .step p { margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
+
+    /* ===== Ozellik grid ===== */
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .gcard { padding: 24px 22px; border-radius: 15px; border: 1px solid var(--border); background: var(--surface);
+      transition: transform .2s var(--ease), border-color .2s, background .2s; }
+    .gcard:hover { transform: translateY(-5px); border-color: var(--border-strong); background: var(--card); }
+    .gcard .ic { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px; margin-bottom: 15px;
+      border: 1px solid var(--border-strong); background: rgba(255,255,255,0.03); color: #fff; }
+    .gcard h3 { font-size: 16px; font-weight: 700; } .gcard p { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+    .ic svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+
+    /* ===== Guven / guvenlik ===== */
+    .trust { position: relative; padding: 64px 0; }
+    .trust-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+      padding: 48px; border-radius: 22px; border: 1px solid var(--border-strong);
+      background: radial-gradient(120% 140% at 0% 0%, rgba(255,255,255,0.04), rgba(255,255,255,0) 60%), var(--surface); }
+    .shield { width: 80px; height: 80px; display: grid; place-items: center; border-radius: 20px; margin-bottom: 20px;
+      border: 1px solid var(--border-strong); background: rgba(255,255,255,0.03); }
+    .shield svg { width: 40px; height: 40px; stroke: #fff; fill: none; stroke-width: 1.6; }
+    .trust h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); font-weight: 700; }
+    .trust .big { margin: 14px 0 0; color: var(--muted); font-size: 16px; }
+    .tlist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .tlist li { display: flex; gap: 14px; align-items: flex-start; }
+    .tlist .chk { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center;
+      background: rgba(255,45,111,0.12); border: 1px solid rgba(255,45,111,0.35); color: var(--pink); font-weight: 700; font-size: 14px; }
+    .tlist b { display: block; font-size: 15px; } .tlist span { color: var(--muted); font-size: 13.5px; }
+    .nobadge { display: inline-flex; align-items: center; gap: 9px; margin-top: 22px; padding: 10px 18px; border-radius: 999px;
+      border: 1px solid rgba(255,45,111,0.4); background: rgba(255,45,111,0.08); font-size: 13px; font-weight: 700; letter-spacing: .5px; }
+    .nobadge .d { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+
+    /* ===== Sistem gereksinimleri ===== */
+    .req-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .req { text-align: center; padding: 26px 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); }
+    .req .ic { margin: 0 auto 12px; width: 38px; height: 38px; display: grid; place-items: center; color: #fff; }
+    .req b { display: block; font-size: 15px; } .req span { color: var(--muted); font-size: 12.5px; }
+
+    /* ===== SSS (accordion) ===== */
+    .faq { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .qa { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; transition: border-color .2s; }
+    .qa.open { border-color: var(--border-strong); }
+    .qa .q { width: 100%; text-align: left; cursor: pointer; border: none; background: none; color: var(--text);
+      font-family: inherit; font-size: 16px; font-weight: 600; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+    .qa .q .plus { flex: 0 0 auto; width: 22px; height: 22px; position: relative; transition: transform .25s var(--ease); color: var(--pink); }
+    .qa .q .plus::before, .qa .q .plus::after { content:""; position:absolute; background: currentColor; border-radius: 2px; }
+    .qa .q .plus::before { top: 50%; left: 2px; right: 2px; height: 2px; transform: translateY(-50%); }
+    .qa .q .plus::after { left: 50%; top: 2px; bottom: 2px; width: 2px; transform: translateX(-50%); transition: opacity .2s; }
+    .qa.open .q .plus { transform: rotate(90deg); } .qa.open .q .plus::after { opacity: 0; }
+    .qa .a { max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
+    .qa .a p { margin: 0; padding: 0 22px 20px; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+
+    /* ===== Final CTA ===== */
+    .final { text-align: center; padding: 96px 0 40px; }
+    .final-box { position: relative; overflow: hidden; border-radius: 26px; border: 1px solid var(--border-strong);
+      padding: 70px 30px; background: radial-gradient(120% 120% at 50% 0%, rgba(255,45,111,0.1), rgba(255,255,255,0) 55%), var(--surface); }
+    .final-box::before { content:""; position:absolute; inset:0; opacity:.05; pointer-events:none;
+      background-image: repeating-linear-gradient(115deg, #fff 0 2px, transparent 2px 44px); animation: stripeFlow 20s linear infinite; }
+    .final h2 { font-size: clamp(2rem, 1.2rem + 3vw, 3.4rem); font-weight: 700; position: relative; z-index: 1; }
+    .final p { color: var(--muted); margin: 16px auto 0; max-width: 480px; position: relative; z-index: 1; }
+    .final .cta { margin-top: 34px; position: relative; z-index: 1; }
+
+    @media (max-width: 880px) {
+      .stat-grid, .req-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+      .trust-box { grid-template-columns: 1fr; gap: 30px; padding: 32px; }
+    }
+    @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+
     /* Cerez bildirimi */
     .cookiebar{position:fixed;left:16px;right:16px;bottom:16px;z-index:300;display:none;
       gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;
@@ -234,6 +331,7 @@
   </style>
 </head>
 <body>
+  <div class="progress" id="prog"></div>
   <!-- Arka plan katmanlari -->
   <div class="glowball a"></div>
   <div class="glowball b"></div>
@@ -282,6 +380,49 @@
     <div class="track" id="mqTrack"></div>
   </div>
 
+  <!-- Istatistik seridi -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat reveal"><div class="num" data-count="10">0</div><div class="lbl">Oyuncu anlık · 2 takım</div></div>
+        <div class="stat reveal"><div class="num"><span class="u">0</span></div><div class="lbl">Ban riski · enjeksiyon yok</div></div>
+        <div class="stat reveal"><div class="num"><span class="u">%</span><span data-count="100">0</span></div><div class="lbl">Ücretsiz · her zaman</div></div>
+        <div class="stat reveal"><div class="num">7/24</div><div class="lbl">Otomatik güncel</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasil calisir -->
+  <section class="section">
+    <div class="container">
+      <div class="sechead reveal">
+        <div class="tagline">Nasıl Çalışır</div>
+        <h2>Üç adımda hazır</h2>
+        <p>Kurulum saniyeler sürer, geri kalanı otomatik. Oyuna müdahale yok — sadece istihbarat.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">01</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+          <h3>İndir</h3>
+          <p>Tek tıkla Windows kurulumunu indir. Kayıt yok, ücret yok.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">02</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+          <h3>Çalıştır</h3>
+          <p>Uygulamayı aç; arka planda sessizce beklemeye başlar.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">03</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Maça Gir</h3>
+          <p>Ajan seçimi açılır açılmaz tüm istihbarat ekranında.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main class="container">
     <section class="feature reveal">
       <div class="f-media tilt"><div class="tilt-inner"><span class="tilt-glow"></span><img src="assets/28.png" alt="CLTR PULSE canlı maç ekranı" loading="lazy" /></div></div>
@@ -326,6 +467,27 @@
     </section>
   </main>
 
+  <!-- Ozellik grid -->
+  <section class="section">
+    <div class="container">
+      <div class="sechead reveal">
+        <div class="tagline">Her Şey Dahil</div>
+        <h2>Tek ekran, tam istihbarat</h2>
+        <p>Maçı kazanmak için bilmen gereken her şey, anında ve sade bir arayüzde.</p>
+      </div>
+      <div class="grid">
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg></div><h3>Rank & Peak</h3><p>Güncel ve zirve rank görselleri; her iki takımın tamamı.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 20V10m4 10V4m4 16v-7m4 7V8"/></svg></div><h3>KDA & Kazanma</h3><p>Takım ortalaması KDA, kazanma yüzdesi ve kafa isabet oranı.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><h3>Spike Sayacı</h3><p>Salise hassasiyetinde geri sayım ve defuse pencereleri.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l18-5v12M3 11v6a2 2 0 002 2h2M3 11l6 2m0 0v6a2 2 0 01-2 2H7"/></svg></div><h3>Takılı Skinler</h3><p>O maçta kullanılan silah skinleri, silah önceliğine göre sıralı.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 19V9m4 10V6m4 13v-8"/></svg></div><h3>Lider Tablosu</h3><p>Bölgesel ilk 50 ranked ve isim#tag ile oyuncu arama.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 1-3.5 3-3.5"/></svg></div><h3>Premade Tespiti</h3><p>Duo ve parti grupları renk ve simgeyle anında belli.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg></div><h3>Otomatik Güncelleme</h3><p>Her açılışta en güncel sürüm — sen hiçbir şey yapmadan.</p></div>
+        <div class="gcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3m10-10h-3M5 12H2m15.5-6.5l-2 2m-7 7l-2 2m11 0l-2-2m-7-7l-2-2"/></svg></div><h3>Özelleştirilebilir</h3><p>Saydamlık, cam efekti, yenileme hızı ve kısayollar senin elinde.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="skins reveal">
     <div class="container">
       <div class="tagline">Takılı Skinler</div>
@@ -335,6 +497,73 @@
         <div class="skin-card"><img src="assets/31.png" alt="Takılı skinler 1" loading="lazy" /></div>
         <div class="skin-card"><img src="assets/32.png" alt="Takılı skinler 2" loading="lazy" /></div>
         <div class="skin-card"><img src="assets/33.png" alt="Takılı skinler 3" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guven / ban-safe -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-box reveal">
+        <div>
+          <div class="shield"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h2>Güvenle kullan</h2>
+          <p class="big">CLTR PULSE oyuna <b>müdahale etmez</b>. VALORANT'ın kendi sunduğu yerel veriyi okur — bellek okuma, enjeksiyon veya hile yoktur.</p>
+          <div class="nobadge"><span class="d"></span> BAN RİSKİ: YOK</div>
+        </div>
+        <ul class="tlist">
+          <li><span class="chk">✓</span><div><b>Yalnızca yerel API</b><span>Riot'un bilgisayarında çalıştırdığı resmi veriyi kullanır.</span></div></li>
+          <li><span class="chk">✓</span><div><b>Enjeksiyon & bellek okuma yok</b><span>Oyun belleğine dokunmaz, dosyalarını değiştirmez.</span></div></li>
+          <li><span class="chk">✓</span><div><b>Yalnızca görüntüler</b><span>Nişan, hareket veya oyun girdisine hiçbir etkisi yoktur.</span></div></li>
+          <li><span class="chk">✓</span><div><b>Şeffaf & ücretsiz</b><span>Gizli işlem yok; tamamen ücretsiz kullanılır.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sistem gereksinimleri -->
+  <section class="section">
+    <div class="container">
+      <div class="sechead reveal">
+        <div class="tagline">Sistem Gereksinimleri</div>
+        <h2>Hafif ve hızlı</h2>
+        <p>Oyununun FPS'ine hissedilir etkisi yok. Kur, aç, oyna.</p>
+      </div>
+      <div class="req-grid">
+        <div class="req reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 20h8M12 17v3"/></svg></div><b>Windows 10 / 11</b><span>64-bit</span></div>
+        <div class="req reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 11h12M8 15h.01M11 15h.01M4 7h16v10H4z"/></svg></div><b>VALORANT</b><span>Kurulu olmalı</span></div>
+        <div class="req reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12H2m4-4l-4 4 4 4m12-8l4 4-4 4"/></svg></div><b>~80 MB</b><span>Disk alanı</span></div>
+        <div class="req reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div><b>Düşük Kaynak</b><span>FPS'e etkisiz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="section">
+    <div class="container">
+      <div class="sechead reveal">
+        <div class="tagline">SSS</div>
+        <h2>Sık sorulan sorular</h2>
+      </div>
+      <div class="faq">
+        <div class="qa reveal"><button class="q">Ban yer miyim?<span class="plus"></span></button><div class="a"><p>Hayır. CLTR PULSE oyuna hiçbir şekilde müdahale etmez; bellek okumaz, enjeksiyon yapmaz. Yalnızca VALORANT'ın bilgisayarında sunduğu resmi yerel veriyi gösterir.</p></div></div>
+        <div class="qa reveal"><button class="q">Ücretsiz mi?<span class="plus"></span></button><div class="a"><p>Evet, tamamen ücretsiz. Gizli ücret, abonelik ya da kayıt zorunluluğu yoktur.</p></div></div>
+        <div class="qa reveal"><button class="q">Windows "bilinmeyen yayıncı" uyarısı veriyor, güvenli mi?<span class="plus"></span></button><div class="a"><p>Uygulama henüz imzalı olmadığı için Windows SmartScreen uyarabilir. "Ek bilgi → Yine de çalıştır" diyerek kurabilirsin. İçerik şeffaftır ve zararlı bir işlem yapmaz.</p></div></div>
+        <div class="qa reveal"><button class="q">Nasıl güncellenir?<span class="plus"></span></button><div class="a"><p>Otomatik. Uygulama her açılışta en güncel sürümü kontrol eder ve kendini günceller; senin bir şey yapmana gerek yok.</p></div></div>
+        <div class="qa reveal"><button class="q">Hangi bölgelerde çalışır?<span class="plus"></span></button><div class="a"><p>Riot'un yerel API'sini kullandığı için tüm bölgelerde çalışır. Hesabının bulunduğu bölgenin verilerini otomatik algılar.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final">
+    <div class="container">
+      <div class="final-box reveal">
+        <h2 class="metal">Rakibini tanı,<br>maça önde başla</h2>
+        <p>Takımın ve rakibin tüm istihbaratı tek ekranda. Şimdi indir, ilk maçında farkı gör.</p>
+        <div class="cta">
+          <a id="dlBtn2" class="btn-dl" href="indir/"><span class="ico">⬇</span> <span>Windows için İndir</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -454,6 +683,44 @@
   </script>
 
   <script>
+    /* Scroll ilerleme cubugu */
+    (function () {
+      var p = document.getElementById('prog');
+      function upd() { var h = document.documentElement; var sc = h.scrollTop || document.body.scrollTop;
+        var max = h.scrollHeight - h.clientHeight; p.style.width = (max > 0 ? (sc / max * 100) : 0) + '%'; }
+      addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+    })();
+
+    /* Animasyonlu sayaclar */
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var nums = document.querySelectorAll('[data-count]');
+      function run(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        if (reduce) { el.textContent = target; return; }
+        var start = null, dur = 1100;
+        function step(t) { if (!start) start = t; var pr = Math.min((t - start) / dur, 1);
+          el.textContent = Math.floor(pr * target); if (pr < 1) requestAnimationFrame(step); else el.textContent = target; }
+        requestAnimationFrame(step);
+      }
+      if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } }); }, { threshold: 0.5 });
+      nums.forEach(function (n) { io.observe(n); });
+    })();
+
+    /* SSS accordion */
+    (function () {
+      document.querySelectorAll('.qa .q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var qa = btn.parentElement, a = qa.querySelector('.a'), open = qa.classList.contains('open');
+          document.querySelectorAll('.qa.open').forEach(function (o) { o.classList.remove('open'); o.querySelector('.a').style.maxHeight = null; });
+          if (!open) { qa.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+        });
+      });
+    })();
+  </script>
+
+  <script>
   /* Telemetri + surum */
   (function(){
     var EP="https://illegalculture.org/api/pulse/track";
@@ -463,9 +730,8 @@
     fetch("https://api.github.com/repos/"+REPO+"/releases/latest").then(function(r){return r.ok?r.json():null;}).then(function(d){
       if(d&&d.tag_name){ ver=d.tag_name.replace(/^v/,""); var vl=document.getElementById("verLine"); if(vl) vl.innerHTML='CLTR PULSE · Windows · <b>v'+ver+'</b>'; }
     }).catch(function(){}).finally(function(){ping("visit");});
-    var d=document.getElementById("dlBtn"),n=document.getElementById("navDl");
     function dl(){ping("download");}
-    if(d)d.addEventListener("click",dl); if(n)n.addEventListener("click",dl);
+    ["dlBtn","navDl","dlBtn2"].forEach(function(id){var el=document.getElementById(id); if(el)el.addEventListener("click",dl);});
   })();
   </script>
 
