@@ -754,8 +754,8 @@
         if(d&&d.tag_name){ ver=d.tag_name.replace(/^v/,""); var vl=document.getElementById("verLine"); if(vl) vl.innerHTML='Valorant Tracker · Windows · <b>v'+ver+'</b>'; }
       }).catch(function(){}).finally(function(){ping("visit");});
       (function(){var y=document.getElementById("yr"); if(y)y.textContent=new Date().getFullYear();})();
-      function dl(){ping("download");}
-      ["dlBtn","navDl","dlBtn2"].forEach(function(id){var el=document.getElementById(id); if(el)el.addEventListener("click",dl);});
+      // NOT: "download" olayini SADECE /indir/ sayfasi atar. Butona basinca da atarsak
+      // cift sayilir -> buradan atmiyoruz, sadece /indir/ sayfasindaki ping kalir.
     })();
   </script>
 
