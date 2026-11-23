@@ -42,8 +42,8 @@
       background-image: repeating-linear-gradient(115deg, #fff 0 2px, transparent 2px 46px);
       animation: stripeFlow 22s linear infinite; }
     @keyframes stripeFlow { to { transform: translateX(-46px); } }
-    /* Ikinci, ince pembe akan serit */
-    .stripes.pink { opacity: .06; background-image: repeating-linear-gradient(115deg, var(--pink) 0 1px, transparent 1px 120px);
+    /* Ikinci ince beyaz akan serit (ters yon) */
+    .stripes.alt { opacity: .035; background-image: repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 120px);
       animation-duration: 16s; animation-direction: reverse; }
     /* Dikey tarama cizgisi */
     .scanlines { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .4;
@@ -51,9 +51,9 @@
     /* Pembe isilti kuresi */
     .glowball { position: fixed; z-index: 0; border-radius: 50%; filter: blur(100px); pointer-events: none; }
     .glowball.a { width: 55vw; height: 55vw; top: -18vw; left: 50%; transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(255,45,111,0.16), transparent 62%); animation: float1 14s ease-in-out infinite; }
+      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 62%); animation: float1 14s ease-in-out infinite; }
     .glowball.b { width: 40vw; height: 40vw; bottom: -12vw; right: -8vw;
-      background: radial-gradient(circle, rgba(180,180,210,0.06), transparent 62%); animation: float2 18s ease-in-out infinite; }
+      background: radial-gradient(circle, rgba(180,180,210,0.05), transparent 62%); animation: float2 18s ease-in-out infinite; }
     @keyframes float1 { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(30px); } }
     @keyframes float2 { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-40px); } }
 
@@ -145,14 +145,14 @@
     .feature { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; padding: 80px 0; }
     .feature.rev { grid-template-columns: 0.9fr 1.1fr; }
     .feature.rev .f-media { order: 2; } .feature.rev .f-text { order: 1; }
-    .f-text .tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink);
+    .f-text .tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff;
       display: inline-flex; align-items: center; gap: 10px; }
-    .f-text .tagline::before { content:""; width: 28px; height: 1px; background: var(--pink); }
+    .f-text .tagline::before { content:""; width: 28px; height: 1px; background: #fff; }
     .f-text h2 { font-size: clamp(1.9rem, 1.2rem + 2vw, 3rem); margin: 16px 0 0; font-weight: 700; }
     .f-text p { margin: 16px 0 0; color: var(--muted); font-size: 16px; }
     .f-list { margin: 22px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .f-list li { display: flex; align-items: center; gap: 11px; font-size: 14.5px; color: var(--text); }
-    .f-list li::before { content: "◈"; color: var(--pink); font-size: 12px; }
+    .f-list li::before { content: "◈"; color: #fff; font-size: 12px; }
 
     /* reveal */
     .reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -161,26 +161,36 @@
     /* 3D tilt + pembe neon cerceve */
     .tilt { perspective: 1000px; }
     .tilt-inner { position: relative; border-radius: 16px; overflow: hidden; transform-style: preserve-3d;
-      border: 1px solid rgba(255,45,111,0.42);
-      box-shadow: 0 0 0 1px rgba(255,45,111,0.22), 0 0 44px rgba(255,45,111,0.2), 0 36px 80px rgba(0,0,0,0.75);
+      box-shadow: 0 0 26px rgba(255,255,255,0.07), 0 36px 80px rgba(0,0,0,0.78);
       transition: transform .18s var(--ease), box-shadow .3s var(--ease); will-change: transform; }
-    .tilt-inner::after { content: ""; position: absolute; inset: 0; border-radius: 16px; pointer-events: none;
-      box-shadow: inset 0 0 30px rgba(255,45,111,0.12); }
+    /* Akan RGB cerceve (parlak, donen renkli serit) */
+    .rgb-border, .tilt-inner::after, .skin-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 3px;
+      z-index: 5; pointer-events: none;
+      background: conic-gradient(from 0deg, #ff0040, #ff8a00, #ffe600, #38ff7a, #00e0ff, #4d7cff, #c04dff, #ff0040);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+      filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)); animation: rgbflow 4.5s linear infinite; }
+    .tilt-inner::after { border-radius: 16px; }
+    @keyframes rgbflow {
+      from { filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)) hue-rotate(0deg); }
+      to   { filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)) hue-rotate(360deg); }
+    }
     .tilt-inner img { display: block; width: 100%; height: auto; cursor: zoom-in; image-rendering: -webkit-optimize-contrast; }
-    .tilt:hover .tilt-inner { box-shadow: 0 0 0 1px rgba(255,45,111,0.5), 0 0 70px rgba(255,45,111,0.4), 0 44px 90px rgba(0,0,0,0.8); }
-    .tilt-glow { position: absolute; width: 260px; height: 260px; border-radius: 50%; pointer-events: none; opacity: 0;
-      background: radial-gradient(circle, rgba(255,45,111,0.25), transparent 60%); transition: opacity .2s; transform: translate(-50%, -50%); }
+    .tilt:hover .tilt-inner { box-shadow: 0 0 46px rgba(255,255,255,0.16), 0 44px 90px rgba(0,0,0,0.82); }
+    .tilt-glow { position: absolute; width: 260px; height: 260px; border-radius: 50%; pointer-events: none; opacity: 0; z-index: 2;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%); transition: opacity .2s; transform: translate(-50%, -50%); }
     .tilt:hover .tilt-glow { opacity: 1; }
 
     /* ===== Skin menu ===== */
     .skins { padding: 56px 0 96px; text-align: center; }
-    .skins .tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); }
+    .skins .tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; }
     .skins h2 { font-size: clamp(1.9rem, 1.2rem + 2vw, 3rem); margin: 14px 0 6px; font-weight: 700; }
     .skins .sub { color: var(--muted); max-width: 540px; margin: 0 auto 42px; }
     .skin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .skin-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-strong);
-      background: var(--card); box-shadow: 0 20px 50px rgba(0,0,0,0.55); transition: transform .2s var(--ease), border-color .2s; }
-    .skin-card:hover { transform: translateY(-6px); border-color: rgba(255,45,111,0.45); }
+    .skin-card { position: relative; border-radius: 14px; overflow: hidden;
+      background: var(--card); box-shadow: 0 20px 50px rgba(0,0,0,0.55); transition: transform .2s var(--ease), box-shadow .2s; }
+    .skin-card::after { border-radius: 14px; }
+    .skin-card:hover { transform: translateY(-6px); box-shadow: 0 0 36px rgba(255,255,255,0.12), 0 24px 60px rgba(0,0,0,0.6); }
     .skin-card img { display: block; width: 100%; height: auto; cursor: zoom-in; image-rendering: -webkit-optimize-contrast; }
 
     /* ===== Lightbox ===== */
@@ -188,8 +198,8 @@
       background: rgba(0,0,0,0.94); backdrop-filter: blur(6px); padding: 3vh 3vw; cursor: zoom-out; }
     .lightbox.open { display: flex; animation: lbIn .18s var(--ease); }
     .lightbox img { max-width: 94vw; max-height: 94vh; width: auto; height: auto; border-radius: 12px;
-      border: 1px solid rgba(255,45,111,0.5);
-      box-shadow: 0 0 0 1px rgba(255,45,111,0.3), 0 0 60px rgba(255,45,111,0.25), 0 40px 100px rgba(0,0,0,0.85); }
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 0 60px rgba(255,255,255,0.1), 0 40px 100px rgba(0,0,0,0.9); }
     .lightbox .lb-close { position: fixed; top: 20px; right: 26px; font-size: 30px; font-weight: 700; color: var(--muted);
       cursor: pointer; line-height: 1; user-select: none; transition: color .15s; }
     .lightbox .lb-close:hover { color: #fff; }
@@ -229,7 +239,7 @@
   <div class="glowball a"></div>
   <div class="glowball b"></div>
   <div class="stripes"></div>
-  <div class="stripes pink"></div>
+  <div class="stripes alt"></div>
   <canvas id="px"></canvas>
   <div class="scanlines"></div>
 
