@@ -37,18 +37,7 @@
     /* ===== Arka plan katmanlari (partikul + akan seritler) ===== */
     #fx { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
     #px { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .6; }
-    /* Akan kosegen B/W seritler */
-    .stripes { position: fixed; inset: -20%; z-index: 0; pointer-events: none; opacity: .05;
-      background-image: repeating-linear-gradient(115deg, #fff 0 2px, transparent 2px 46px);
-      animation: stripeFlow 22s linear infinite; }
-    @keyframes stripeFlow { to { transform: translateX(-46px); } }
-    /* Ikinci ince beyaz akan serit (ters yon) */
-    .stripes.alt { opacity: .035; background-image: repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 120px);
-      animation-duration: 16s; animation-direction: reverse; }
-    /* Dikey tarama cizgisi */
-    .scanlines { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .4;
-      background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px); mix-blend-mode: overlay; }
-    /* Pembe isilti kuresi */
+    /* Arka plan isilti kuresi (notr) */
     .glowball { position: fixed; z-index: 0; border-radius: 50%; filter: blur(100px); pointer-events: none; }
     .glowball.a { width: 55vw; height: 55vw; top: -18vw; left: 50%; transform: translateX(-50%);
       background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 62%); animation: float1 14s ease-in-out infinite; }
@@ -60,8 +49,6 @@
     /* ===== ACILIS INTROSU ===== */
     #intro { position: fixed; inset: 0; z-index: 9999; background: #000; display: flex; align-items: center; justify-content: center;
       overflow: hidden; }
-    #intro .introStripes { position: absolute; inset: -20%; opacity: .08;
-      background-image: repeating-linear-gradient(115deg, #fff 0 2px, transparent 2px 40px); animation: stripeFlow 6s linear infinite; }
     #intro .ibar { position: absolute; left: 0; height: 100%; width: 100%; background: #000; }
     /* kosegen kapi panelleri */
     .idoor { position: absolute; top: -10%; height: 120%; width: 52%; background: #000; z-index: 3;
