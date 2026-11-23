@@ -131,22 +131,26 @@
         linear-gradient(90deg, rgba(159,200,242,.22) 1px, transparent 1px) 0 0/40px 40px;
       -webkit-mask:radial-gradient(closest-side, #000, transparent); mask:radial-gradient(closest-side, #000, transparent);
       opacity:.5; }
-    .orb{ position:relative; width:300px; height:300px; transform-style:preserve-3d; transition:transform .15s ease-out; }
+    .orb{ position:relative; width:300px; height:300px; transform-style:preserve-3d; transition:transform .3s ease-out;
+      animation:orbSway 6s ease-in-out infinite; }
     .orb .halo{ position:absolute; inset:-30px; border-radius:50%;
-      background:radial-gradient(circle, rgba(111,169,230,.35), transparent 62%); filter:blur(14px); animation:floaty 5s ease-in-out infinite; }
+      background:radial-gradient(circle, rgba(111,169,230,.35), transparent 62%); filter:blur(14px); }
     .orb img{ position:relative; width:300px; height:300px; object-fit:contain;
       filter:drop-shadow(0 34px 50px rgba(0,0,0,.7)) drop-shadow(0 0 30px rgba(111,169,230,.4));
-      animation:floaty 5s ease-in-out infinite; transform:translateZ(60px); }
-    @keyframes floaty{ 0%,100%{ transform:translateY(0) translateZ(60px); } 50%{ transform:translateY(-16px) translateZ(60px); } }
+      transform:translateZ(60px); }
+    /* rings: yerinde durur (donmez), orb ile birlikte hafifce sallanir */
     .orb .ring3d{ position:absolute; top:50%; left:50%; width:400px; height:400px; margin:-200px 0 0 -200px;
       border-radius:50%; border:2px solid transparent; border-top-color:rgba(159,200,242,.7); border-bottom-color:rgba(111,169,230,.25);
-      transform:rotateX(74deg); animation:spin 9s linear infinite; }
-    .orb .ring3d.b{ width:320px; height:320px; margin:-160px 0 0 -160px; border-top-color:rgba(255,255,255,.4); animation-duration:6s; animation-direction:reverse; }
+      transform:rotateX(74deg); }
+    .orb .ring3d.b{ width:320px; height:320px; margin:-160px 0 0 -160px; border-top-color:rgba(255,255,255,.4); transform:rotateX(74deg) rotate(40deg); }
+    @keyframes orbSway{ 0%,100%{ transform:rotateZ(-2.2deg) rotateY(-4deg); } 50%{ transform:rotateZ(2.2deg) rotateY(4deg); } }
+    @keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
 
     /* ============ MARQUEE ============ */
     .marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden;
       background:linear-gradient(90deg, rgba(111,169,230,.05), transparent, rgba(111,169,230,.05)); padding:16px 0; }
-    .track{ display:flex; gap:34px; width:max-content; animation:scrollx 26s linear infinite; }
+    .track{ display:flex; width:max-content; animation:scrollx 34s linear infinite; }
+    .mq-group{ display:flex; gap:34px; padding-right:34px; align-items:center; flex:none; }
     .marquee span{ font-family:"Space Grotesk"; font-weight:700; font-size:15px; letter-spacing:3px; color:var(--faint); white-space:nowrap; text-transform:uppercase; }
     .marquee span .p{ color:var(--sky); margin-left:.2em; }
     @keyframes scrollx{ to{ transform:translateX(-50%); } }
@@ -558,19 +562,6 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="final">
-    <div class="container">
-      <div class="final-box reveal">
-        <h2 class="metal">Rakibini tanı,<br>maça önde başla</h2>
-        <p>Takımın ve rakibin tüm istihbaratı tek ekranda. Şimdi indir, ilk maçında farkı gör.</p>
-        <div class="cta" style="justify-content:center">
-          <a id="dlBtn2" class="btn-dl" href="indir/"><span class="ico">⬇</span> <span>Windows için İndir</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer class="foot">
     <div class="container">
@@ -583,7 +574,6 @@
       </div>
       <p class="disc">Valorant Tracker, Riot Games ile bağlı değildir ve Riot Games tarafından onaylanmamıştır.
         VALORANT, Riot Games, Inc. şirketinin ticari markasıdır. Uygulama VALORANT'ın yerel API'sini kullanır; oyuna müdahale etmez.</p>
-      <a class="site" href="https://illegalculture.org" rel="noopener">illegalculture.org</a>
       <p class="copy">© <span id="yr"></span> Blackbit. Tüm hakları saklıdır.</p>
     </div>
   </footer>
@@ -644,7 +634,7 @@
     (function () {
       var t = document.getElementById('mqTrack'); if (!t) return;
       var unit = '<span>VALORANT<span class="p">TRACKER</span></span><span>•</span><span>CANLI MAÇ İSTİHBARATI</span><span>•</span><span>KDA</span><span>•</span><span>RANK</span><span>•</span><span>SPİKE SAYACI</span><span>•</span><span>SKİNLER</span><span>•</span><span>BY BLACKBIT</span><span>•</span>';
-      t.innerHTML = unit + unit;
+      t.innerHTML = '<div class="mq-group">' + unit + '</div><div class="mq-group">' + unit + '</div>';
     })();
 
     /* ===== Reveal ===== */
