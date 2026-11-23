@@ -222,6 +222,10 @@
     .skin-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
     .skin-card{ position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line2); background:var(--panel); box-shadow:var(--shadow-lg); }
     .skin-card img{ display:block; width:100%; height:auto; cursor:zoom-in; }
+    .skin-card iframe{ display:block; width:100%; height:340px; border:0; background:#0b0d10; }
+    .skin-cap{ position:absolute; left:0; right:0; top:0; z-index:6; padding:12px 14px; pointer-events:none;
+      font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#fff;
+      background:linear-gradient(180deg, rgba(8,9,12,.85), transparent); }
 
     /* ============ TRUST ============ */
     .trust-box{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
@@ -474,14 +478,26 @@
   <section class="section">
     <div class="container">
       <div class="sechead reveal">
-        <div class="tagline">Takılı Skinler</div>
-        <h2>Rakibin cephanesini gör</h2>
+        <div class="tagline">3B Skin Vitrini</div>
+        <h2>Fareyle döndür, yakından incele</h2>
         <p>Herkesin takılı silah skinleri — maça girmeden önce masada.</p>
       </div>
       <div class="skin-grid">
-        <div class="skin-card reveal"><img src="assets/31.png" alt="Takılı skinler 1" loading="lazy" /></div>
-        <div class="skin-card reveal"><img src="assets/32.png" alt="Takılı skinler 2" loading="lazy" /></div>
-        <div class="skin-card reveal"><img src="assets/33.png" alt="Takılı skinler 3" loading="lazy" /></div>
+        <div class="skin-card reveal">
+          <iframe title="Champions Vandal" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            src="https://sketchfab.com/models/98e52436582b44f9902716b8834784d6/embed?ui_theme=dark&dnt=1&ui_infos=0&ui_hint=0&autospin=0.2"></iframe>
+          <div class="skin-cap">Champions · Vandal</div>
+        </div>
+        <div class="skin-card reveal">
+          <iframe title="Blue Primordium Vandal" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            src="https://sketchfab.com/models/0d5bdfba5f5c4f08b93d09dad6f2af31/embed?ui_theme=dark&dnt=1&ui_infos=0&ui_hint=0&autospin=0.2"></iframe>
+          <div class="skin-cap">Primordium · Vandal</div>
+        </div>
+        <div class="skin-card reveal">
+          <iframe title="Reaver Phantom (White)" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
+            src="https://sketchfab.com/models/399ea10e99b5459cbf892498c7c258fc/embed?ui_theme=dark&dnt=1&ui_infos=0&ui_hint=0&autospin=0.2"></iframe>
+          <div class="skin-cap">Reaver · Phantom</div>
+        </div>
       </div>
     </div>
   </section>
