@@ -164,17 +164,16 @@
       box-shadow: 0 0 26px rgba(255,255,255,0.07), 0 36px 80px rgba(0,0,0,0.78);
       transition: transform .18s var(--ease), box-shadow .3s var(--ease); will-change: transform; }
     /* Akan RGB cerceve (parlak, donen renkli serit) */
+    @property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+    /* Akan SIYAH-BEYAZ cerceve (donen parlak serit) */
     .rgb-border, .tilt-inner::after, .skin-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 3px;
       z-index: 5; pointer-events: none;
-      background: conic-gradient(from 0deg, #ff0040, #ff8a00, #ffe600, #38ff7a, #00e0ff, #4d7cff, #c04dff, #ff0040);
+      background: conic-gradient(from var(--ang), #ffffff, #171717, #ffffff, #171717, #ffffff, #171717, #ffffff, #171717, #ffffff);
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
       mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
-      filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)); animation: rgbflow 4.5s linear infinite; }
+      filter: brightness(1.15) contrast(1.1) drop-shadow(0 0 6px rgba(255,255,255,0.28)); animation: bwflow 4.5s linear infinite; }
     .tilt-inner::after { border-radius: 16px; }
-    @keyframes rgbflow {
-      from { filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)) hue-rotate(0deg); }
-      to   { filter: brightness(1.45) saturate(1.6) drop-shadow(0 0 6px rgba(255,255,255,0.28)) hue-rotate(360deg); }
-    }
+    @keyframes bwflow { to { --ang: 360deg; } }
     .tilt-inner img { display: block; width: 100%; height: auto; cursor: zoom-in; image-rendering: -webkit-optimize-contrast; }
     .tilt:hover .tilt-inner { box-shadow: 0 0 46px rgba(255,255,255,0.16), 0 44px 90px rgba(0,0,0,0.82); }
     .tilt-glow { position: absolute; width: 260px; height: 260px; border-radius: 50%; pointer-events: none; opacity: 0; z-index: 2;
