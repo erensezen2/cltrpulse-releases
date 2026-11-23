@@ -634,7 +634,18 @@
     (function () {
       var t = document.getElementById('mqTrack'); if (!t) return;
       var unit = '<span>VALORANT<span class="p">TRACKER</span></span><span>•</span><span>CANLI MAÇ İSTİHBARATI</span><span>•</span><span>KDA</span><span>•</span><span>RANK</span><span>•</span><span>SPİKE SAYACI</span><span>•</span><span>SKİNLER</span><span>•</span><span>BY BLACKBIT</span><span>•</span>';
-      t.innerHTML = '<div class="mq-group">' + unit + '</div><div class="mq-group">' + unit + '</div>';
+      function build() {
+        // Her "yari"yi ekran genisliginden genis olana kadar doldur; sonra ikiye kopyala.
+        // Boylece -50% animasyonunda hic bosluk/kesinti olmaz (genis ekranlarda bile).
+        var g = document.createElement('div'); g.className = 'mq-group'; g.innerHTML = unit;
+        t.innerHTML = ''; t.appendChild(g);
+        var guard = 0;
+        while (g.offsetWidth < window.innerWidth && guard < 40) { g.innerHTML += unit; guard++; }
+        var clone = g.cloneNode(true);
+        t.appendChild(clone);
+      }
+      build();
+      var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 250); });
     })();
 
     /* ===== Reveal ===== */
