@@ -220,14 +220,15 @@
 
     /* ============ SKINS ============ */
     .skin-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    /* Skinler — kutu yok, silahlar dogrudan arka plan uzerinde */
-    .skin-item{ margin:0; display:flex; flex-direction:column; align-items:center; gap:18px; padding:22px 10px; }
+    /* Skinler — kutu yok, silahlar dogrudan arka plan uzerinde, fareyle 3D egilir */
+    .skin-item{ margin:0; display:flex; flex-direction:column; align-items:center; gap:18px; padding:26px 10px; perspective:1000px; }
+    .skin-item .skin-3d{ width:100%; display:flex; justify-content:center; transform-style:preserve-3d; will-change:transform; }
     .skin-item img{ width:100%; max-height:150px; object-fit:contain; display:block;
       filter:drop-shadow(0 24px 34px rgba(0,0,0,.7)) drop-shadow(0 0 24px rgba(159,200,242,.14));
-      animation:skinFloat 6s ease-in-out infinite; transition:transform .45s cubic-bezier(.2,.7,.2,1); }
+      animation:skinFloat 6s ease-in-out infinite; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+    .skin-item.active img{ animation:none; transition:transform .08s linear; }
     .skin-item:nth-child(2) img{ animation-delay:-2s; }
     .skin-item:nth-child(3) img{ animation-delay:-4s; }
-    .skin-item:hover img{ transform:translateY(-6px) scale(1.07); }
     .skin-item figcaption{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
     @keyframes skinFloat{ 0%,100%{ transform:translateY(0) rotate(-.3deg); } 50%{ transform:translateY(-12px) rotate(.3deg); } }
 
@@ -488,15 +489,15 @@
       </div>
       <div class="skin-grid">
         <figure class="skin-item reveal">
-          <img src="https://media.valorant-api.com/weaponskinchromas/681caac1-4a61-999a-6880-e3a9ed6acf6d/fullrender.png" alt="Champions Vandal" loading="lazy" />
+          <div class="skin-3d"><img src="https://media.valorant-api.com/weaponskinchromas/681caac1-4a61-999a-6880-e3a9ed6acf6d/fullrender.png" alt="Champions Vandal" loading="lazy" /></div>
           <figcaption>Champions · Vandal</figcaption>
         </figure>
         <figure class="skin-item reveal">
-          <img src="https://media.valorant-api.com/weaponskinchromas/8f13cdca-4235-8084-fbda-e6aa9596acbe/fullrender.png" alt="Primordium Vandal" loading="lazy" />
+          <div class="skin-3d"><img src="https://media.valorant-api.com/weaponskinchromas/8f13cdca-4235-8084-fbda-e6aa9596acbe/fullrender.png" alt="Primordium Vandal" loading="lazy" /></div>
           <figcaption>Primordium · Vandal</figcaption>
         </figure>
         <figure class="skin-item reveal">
-          <img src="https://media.valorant-api.com/weaponskinchromas/1708505a-4d55-73d3-8e85-b1ac190fe89c/fullrender.png" alt="Reaver Phantom" loading="lazy" />
+          <div class="skin-3d"><img src="https://media.valorant-api.com/weaponskinchromas/1708505a-4d55-73d3-8e85-b1ac190fe89c/fullrender.png" alt="Reaver Phantom" loading="lazy" /></div>
           <figcaption>Reaver · Phantom</figcaption>
         </figure>
       </div>
@@ -686,6 +687,23 @@
         if (glow) { glow.style.left = (e.clientX - r.left) + 'px'; glow.style.top = (e.clientY - r.top) + 'px'; }
       });
       tilt.addEventListener('mouseleave', function () { inner.style.transform = ''; });
+    });
+
+    /* ===== Skin silahlari: fareyle 3D egilme ===== */
+    document.querySelectorAll('.skin-item').forEach(function (item) {
+      var layer = item.querySelector('.skin-3d');
+      if (!layer) return;
+      item.addEventListener('mousemove', function (e) {
+        var r = item.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        item.classList.add('active');
+        layer.style.transform = 'rotateY(' + (px * 34).toFixed(2) + 'deg) rotateX(' + (-py * 22).toFixed(2) + 'deg) translateZ(26px) scale(1.08)';
+      });
+      item.addEventListener('mouseleave', function () {
+        item.classList.remove('active');
+        layer.style.transform = '';
+      });
     });
 
     /* ===== Hero 3D logo parallax ===== */
