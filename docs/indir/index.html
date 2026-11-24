@@ -8,60 +8,119 @@
   <link rel="icon" href="../favicon.ico" sizes="any" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    html, body { margin: 0; height: 100%; background: radial-gradient(circle at 50% 38%, #12161d, #05070a 72%); color: #eef2f7;
-      font-family: "Inter", system-ui, sans-serif; display: flex; align-items: center; justify-content: center; }
-    .box { text-align: center; padding: 40px; }
-    .blogo { width: 86px; height: 86px; object-fit: contain; margin: 0 auto 22px; display: block;
-      filter: drop-shadow(0 10px 28px rgba(111,169,230,.5)); animation: f 3s ease-in-out infinite; }
-    @keyframes f { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
-    .logo { font-size: 30px; font-weight: 700; letter-spacing: 3px; margin-bottom: 8px;
-      font-family: "Space Grotesk", sans-serif; }
-    .logo .ac { color: #9fc8f2; }
-    .by { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #6fa9e6; margin-bottom: 20px; }
-    .msg { color: #aab3c2; font-size: 15px; line-height: 1.6; }
-    .sp { width: 40px; height: 40px; margin: 0 auto 22px; border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.1); border-top-color: #9fc8f2; animation: s 0.9s linear infinite; }
-    a { color: #9fc8f2; }
-    @keyframes s { to { transform: rotate(360deg); } }
+    :root{ --sky:#9fc8f2; --sky2:#6fa9e6; --text:#eef2f7; --muted:#aab3c2; --faint:#6d7787; --line:rgba(255,255,255,.1); }
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; min-height:100%; }
+    body{
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+      font-family:"Inter",system-ui,sans-serif; color:var(--text); overflow:hidden;
+      background:
+        radial-gradient(900px 520px at 78% -10%, rgba(111,169,230,.16), transparent 60%),
+        radial-gradient(760px 520px at 8% 8%, rgba(159,200,242,.10), transparent 62%),
+        linear-gradient(180deg,#121419,#0a0b0e 70%);
+    }
+    .card{
+      position:relative; width:100%; max-width:440px; text-align:center;
+      padding:44px 38px 36px; border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+      border:1px solid var(--line); box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 40px 90px -40px rgba(0,0,0,.85);
+      backdrop-filter:blur(10px);
+    }
+    .blogo{ width:78px; height:78px; object-fit:contain; margin:0 auto 20px; display:block;
+      filter:drop-shadow(0 12px 28px rgba(111,169,230,.5)); animation:float 3.4s ease-in-out infinite; }
+    @keyframes float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+    .logo{ font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:24px; letter-spacing:2px; }
+    .logo .ac{ background:linear-gradient(180deg,#fff,var(--sky2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .by{ font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--sky); margin:6px 0 24px; }
+    .check{ width:58px; height:58px; margin:0 auto 18px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(180deg, rgba(159,200,242,.22), rgba(111,169,230,.08)); border:1px solid rgba(159,200,242,.4);
+      box-shadow:0 10px 26px -12px rgba(111,169,230,.7); }
+    .check svg{ width:28px; height:28px; stroke:var(--sky); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
+      stroke-dasharray:40; stroke-dashoffset:40; animation:draw .6s ease .15s forwards; }
+    @keyframes draw{ to{ stroke-dashoffset:0; } }
+    .head{ font-family:"Space Grotesk",sans-serif; font-size:21px; font-weight:700; margin:0 0 8px; }
+    .msg{ color:var(--muted); font-size:14px; line-height:1.6; margin:0 0 20px; }
+    .bar{ height:5px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden; margin:0 0 20px; }
+    .bar i{ display:block; height:100%; width:0; border-radius:99px;
+      background:linear-gradient(90deg,var(--sky2),var(--sky),#fff); animation:fill 3s ease forwards; }
+    @keyframes fill{ to{ width:100%; } }
+    .links{ display:flex; flex-direction:column; gap:10px; align-items:center; }
+    .btn{ display:inline-flex; align-items:center; gap:8px; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:14px;
+      padding:12px 22px; border-radius:12px; color:#07121f; text-decoration:none;
+      background:linear-gradient(180deg,#eaf3fd,var(--sky) 55%,var(--sky2)); box-shadow:0 14px 30px -16px rgba(111,169,230,.8); }
+    .home{ color:var(--faint); font-size:12.5px; text-decoration:none; }
+    .home:hover{ color:var(--text); }
+    .home b{ color:var(--sky); font-weight:600; }
+    .err{ color:#ff8a8a; }
+    @media (prefers-reduced-motion:reduce){ *{ animation:none !important; } .bar i{ width:100%; } .check svg{ stroke-dashoffset:0; } }
   </style>
 </head>
 <body>
-  <div class="box">
+  <div class="card">
     <img class="blogo" src="../assets/logo.webp" alt="Blackbit" />
-    <div class="sp"></div>
     <div class="logo">VALORANT<span class="ac">TRACKER</span></div>
     <div class="by">by Blackbit</div>
-    <div class="msg" id="msg">İndirme hazırlanıyor…</div>
+
+    <div class="check" id="check"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></div>
+    <h1 class="head" id="head">İndirme başlıyor…</h1>
+    <p class="msg" id="msg">Kurulum dosyan hazırlanıyor.</p>
+    <div class="bar"><i></i></div>
+
+    <div class="links">
+      <a class="btn" id="manual" href="#" style="display:none"><span>⬇</span> İndirme başlamadıysa tıkla</a>
+      <a class="home" href="../">Otomatik <b id="cd">ana sayfaya</b> dönülüyor…</a>
+    </div>
   </div>
+
   <script>
     (function () {
       var REPO = 'erensezen2/cltrpulse-releases';
+      var EP = 'https://illegalculture.org/api/pulse/track';
+      var head = document.getElementById('head'), msg = document.getElementById('msg'),
+          manual = document.getElementById('manual'), cd = document.getElementById('cd');
+
+      function goHome(sec) {
+        var n = sec;
+        (function tick(){
+          cd.textContent = 'ana sayfaya (' + n + ')';
+          if (n <= 0) { location.replace('../'); return; }
+          n--; setTimeout(tick, 1000);
+        })();
+      }
+
       fetch('https://api.github.com/repos/' + REPO + '/releases/latest')
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (d) {
           var exe = d && (d.assets || []).find(function (a) { return /\.exe$/i.test(a.name); });
+          var ver = (d && d.tag_name) ? d.tag_name.replace(/^v/, '') : '-';
+          // Telemetri: indirme SADECE burada, 1 kez
+          try { fetch(EP, { method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ event:'download', id:'web', version:ver, os:'web' }), keepalive:true }).catch(function(){}); } catch(e){}
+
           if (exe && exe.browser_download_url) {
-            document.getElementById('msg').innerHTML = 'İndirme başladı. Başlamazsa <a href="' + exe.browser_download_url + '">buraya tıkla</a>.';
-            window.location.href = exe.browser_download_url;
+            head.textContent = 'İndirme başladı ✓';
+            msg.innerHTML = 'Valorant Tracker <b style="color:#fff">v' + ver + '</b> indiriliyor. Birazdan ana sayfaya döneceksin.';
+            manual.href = exe.browser_download_url; manual.style.display = 'inline-flex';
+            // indirmeyi tetikle (sayfadan ayrilmadan)
+            var a = document.createElement('a'); a.href = exe.browser_download_url; a.setAttribute('download',''); a.rel = 'noopener';
+            document.body.appendChild(a); a.click(); a.remove();
+            goHome(4);
           } else {
-            document.getElementById('msg').textContent = 'İndirme bulunamadı, lütfen tekrar dene.';
+            document.getElementById('check').style.display = 'none';
+            head.textContent = 'İndirme bulunamadı';
+            msg.innerHTML = '<span class="err">Şu an indirme mevcut değil, lütfen tekrar dene.</span>';
+            goHome(6);
           }
         })
-        .catch(function () { document.getElementById('msg').textContent = 'Bağlantı hatası, lütfen tekrar dene.'; });
+        .catch(function () {
+          document.getElementById('check').style.display = 'none';
+          head.textContent = 'Bağlantı hatası';
+          msg.innerHTML = '<span class="err">İndirme sunucusuna ulaşılamadı, tekrar dene.</span>';
+          goHome(6);
+        });
     })();
-  </script>
-
-  <script>
-  (function(){
-    var EP="https://illegalculture.org/api/pulse/track";
-    fetch("https://api.github.com/repos/erensezen2/cltrpulse-releases/releases/latest")
-      .then(function(r){return r.ok?r.json():null;})
-      .then(function(d){var v=(d&&d.tag_name)?d.tag_name.replace(/^v/,""):"-";
-        fetch(EP,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event:"download",id:"web",version:v,os:"web"}),keepalive:true}).catch(function(){});})
-      .catch(function(){});
-  })();
   </script>
 </body>
 </html>
